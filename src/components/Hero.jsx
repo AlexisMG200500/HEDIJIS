@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[92vh] items-center overflow-hidden pt-28 pb-12 bg-noise"
+      className="relative flex min-h-[92vh] items-center overflow-hidden pt-24 pb-12 bg-noise"
     >
       <div
         className="pointer-events-none absolute -top-40 -right-40 h-96 w-96 rounded-full bg-emerald-DEFAULT/20 blur-3xl"
