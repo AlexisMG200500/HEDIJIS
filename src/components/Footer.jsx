@@ -1,7 +1,7 @@
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { NAV_LINKS, PHONE_DISPLAY, EMAIL, WHATSAPP_NUMBER } from '../constants'
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
   return (
     <footer className="relative border-t border-white/10 bg-ink-900/80 py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -57,10 +57,14 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5 text-sm text-gray-400">
               {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="hover:text-gold-300 transition-colors">
+                <li key={link.key}>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate(link.key)}
+                    className="hover:text-gold-300 transition-colors"
+                  >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

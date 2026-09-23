@@ -2,8 +2,8 @@ import Reveal from './Reveal'
 
 export default function PropuestaValor() {
   return (
-    <section id="propuesta" className="relative py-14 sm:py-20 border-t border-white/5">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section className="relative min-h-[calc(100vh-4.5rem)] flex items-center pt-24 pb-14 sm:pb-20">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <Reveal direction="left">
             <p className="text-sm font-semibold tracking-[0.2em] text-emerald-400 uppercase mb-3">

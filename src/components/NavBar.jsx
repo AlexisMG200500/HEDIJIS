@@ -1,15 +1,24 @@
 import { useState } from 'react'
 import { Menu, X, ArrowRight } from 'lucide-react'
 import { NAV_LINKS } from '../constants'
-import { waLink } from '../utils/whatsapp'
 
-export default function NavBar() {
+export default function NavBar({ activeSection, onNavigate }) {
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const go = (key) => {
+    onNavigate(key)
+    setMobileOpen(false)
+  }
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-ink-950/80 backdrop-blur-xl shadow-lg shadow-black/30">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
-        <a href="#inicio" className="flex items-center gap-3 group" aria-label="HEDIJIS Comercializadora — Inicio">
+        <button
+          type="button"
+          onClick={() => go('inicio')}
+          className="flex items-center gap-3 group"
+          aria-label="HEDIJIS Comercializadora — Inicio"
+        >
           <img
             src="/logo-hedijis.jpg"
             alt="Logotipo HEDIJIS Comercializadora"
@@ -21,30 +30,33 @@ export default function NavBar() {
               COMERCIALIZADORA
             </span>
           </span>
-        </a>
+        </button>
 
         <nav className="hidden lg:flex items-center gap-8" aria-label="Navegación principal">
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-gray-300 hover:text-gold-200 transition-colors duration-300"
+            <button
+              key={link.key}
+              type="button"
+              onClick={() => go(link.key)}
+              aria-current={activeSection === link.key ? 'page' : undefined}
+              className={`text-sm font-medium transition-colors duration-300 ${
+                activeSection === link.key ? 'text-gold-300' : 'text-gray-300 hover:text-gold-200'
+              }`}
             >
               {link.label}
-            </a>
+            </button>
           ))}
         </nav>
 
         <div className="hidden lg:block">
-          <a
-            href={waLink('Hola, me gustaría solicitar información y cotización de suministros con HEDIJIS Comercializadora.')}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={() => go('cotizacion')}
             className="inline-flex items-center gap-2 rounded-xl bg-gold-gradient px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-gold hover:brightness-110 hover:shadow-[0_0_50px_-8px_rgba(212,175,55,0.65)] transition-all duration-300"
           >
             Cotizar Ahora
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </a>
+          </button>
         </div>
 
         <button
@@ -62,25 +74,28 @@ export default function NavBar() {
         <div className="lg:hidden border-t border-white/10 bg-ink-900/95 backdrop-blur-xl shadow-xl shadow-black/50 overflow-hidden animate-[fadeIn_0.2s_ease-out]">
           <nav className="flex flex-col p-4 gap-1 max-w-7xl mx-auto" aria-label="Navegación móvil">
             {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-4 py-3 text-base font-medium text-gray-200 hover:bg-white/5 hover:text-gold-200 transition"
+              <button
+                key={link.key}
+                type="button"
+                onClick={() => go(link.key)}
+                aria-current={activeSection === link.key ? 'page' : undefined}
+                className={`text-left rounded-lg px-4 py-3 text-base font-medium transition ${
+                  activeSection === link.key
+                    ? 'bg-white/5 text-gold-200'
+                    : 'text-gray-200 hover:bg-white/5 hover:text-gold-200'
+                }`}
               >
                 {link.label}
-              </a>
+              </button>
             ))}
-            <a
-              href={waLink('Hola, me gustaría solicitar información y cotización de suministros con HEDIJIS Comercializadora.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
+            <button
+              type="button"
+              onClick={() => go('cotizacion')}
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-gold-gradient px-5 py-3 text-sm font-semibold text-ink-950"
             >
               Cotizar Ahora
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </button>
           </nav>
         </div>
       )}

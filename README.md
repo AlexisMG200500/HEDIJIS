@@ -20,7 +20,7 @@ Sitio web corporativo (Single-Page Application) para **HEDIJIS Comercializadora*
 │   └── logo-hedijis.jpg          # Logotipo oficial de la marca
 ├── src/
 │   ├── components/
-│   │   ├── NavBar.jsx              # Navbar flotante + menú móvil
+│   │   ├── NavBar.jsx              # Navbar fijo full-width + menú móvil
 │   │   ├── Hero.jsx                 # Hero con orbe animado (thinking-orbs)
 │   │   ├── PropuestaValor.jsx
 │   │   ├── LineasSuministro.jsx     # Grid de las 6 categorías del catálogo
@@ -45,22 +45,30 @@ Sitio web corporativo (Single-Page Application) para **HEDIJIS Comercializadora*
 └── vite.config.js
 ```
 
+## Navegación por secciones (sin scroll largo)
+
+El sitio **no** es un scroll continuo de todas las secciones apiladas. `App.jsx` mantiene un estado
+`activeSection` y renderiza una sola sección a la vez (`Hero`, `PropuestaValor`,
+`LineasSuministro`, `Ventajas` o `CotizacionForm`); el navbar y el footer disparan el cambio de
+vista con `onNavigate(key)`. Cada sección ocupa prácticamente la altura de la pantalla y hace una
+transición de entrada (`animate-section-in` en `index.css`) al activarse. El único scroll que
+queda es el natural del contenido de cada vista (p. ej. el formulario de cotización).
+
 ## Animaciones
 
 - El **Hero** incluye un orbe animado (`ThinkingOrb`, estado `weaving`, tono dorado) como acento premium.
 - El botón de envío del formulario de cotización muestra un orbe (`state="solving"`) mientras prepara el mensaje de WhatsApp.
-- Cada sección usa `Reveal` (basado en `IntersectionObserver`) para animar su entrada al hacer scroll (fade + slide sutil).
-- Las secciones se diseñaron con espaciado compacto para minimizar el scroll total de la página.
+- Cada sección hace un fade + slide-in al activarse (`animate-section-in`), y los elementos internos usan `Reveal` (`IntersectionObserver`) para una entrada escalonada.
 
 ## Secciones del sitio
 
-1. **Navbar flotante** con logo, navegación y CTA directo a WhatsApp.
-2. **Hero** con propuesta de valor e insignias de confianza.
+1. **Navbar fijo** (full-width) con logo, navegación por secciones y CTA directo a Cotización.
+2. **Inicio (Hero)** con propuesta de valor e insignias de confianza.
 3. **Propuesta de Valor** dirigida a equipos de Compras/Abastecimiento.
 4. **Líneas de Suministro** — grid con las 6 categorías del catálogo.
 5. **Ventajas Competitivas** ("¿Por qué trabajar con Hedijis?").
 6. **Cotización interactiva** — formulario validado que arma y envía el requerimiento por WhatsApp.
-7. **Footer** con contacto (teléfono, correo, ubicación) y botón flotante de WhatsApp.
+7. **Footer** (siempre visible al final de cada vista) con contacto y navegación, más el botón flotante de WhatsApp.
 
 ## Desarrollo local
 

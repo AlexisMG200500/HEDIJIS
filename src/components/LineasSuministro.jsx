@@ -4,8 +4,8 @@ import Reveal from './Reveal'
 
 export default function LineasSuministro() {
   return (
-    <section id="lineas" className="relative py-14 sm:py-20 border-t border-white/5">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative min-h-[calc(100vh-4.5rem)] flex items-center pt-24 pb-14 sm:pb-20">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center max-w-2xl mx-auto mb-10">
           <p className="text-sm font-semibold tracking-[0.2em] text-emerald-400 uppercase mb-3">
             Catálogo

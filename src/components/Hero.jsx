@@ -2,12 +2,9 @@ import { ThinkingOrb } from 'thinking-orbs'
 import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react'
 import { TRUST_BADGES } from '../constants'
 
-export default function Hero() {
+export default function Hero({ onNavigate }) {
   return (
-    <section
-      id="inicio"
-      className="relative flex min-h-[92vh] items-center overflow-hidden pt-24 pb-12 bg-noise"
-    >
+    <section className="relative flex min-h-[calc(100vh-4.5rem)] items-center overflow-hidden pt-24 pb-12 bg-noise">
       <div
         className="pointer-events-none absolute -top-40 -right-40 h-96 w-96 rounded-full bg-emerald-DEFAULT/20 blur-3xl"
         aria-hidden="true"
@@ -46,19 +43,21 @@ export default function Hero() {
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#cotizacion"
+          <button
+            type="button"
+            onClick={() => onNavigate('cotizacion')}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gold-gradient px-8 py-3.5 text-sm sm:text-base font-semibold text-ink-950 shadow-gold hover:brightness-110 hover:shadow-[0_0_60px_-8px_rgba(212,175,55,0.7)] transition-all duration-300"
           >
             Solicitar Catálogo / Cotización
             <ArrowRight className="h-5 w-5" aria-hidden="true" />
-          </a>
-          <a
-            href="#lineas"
+          </button>
+          <button
+            type="button"
+            onClick={() => onNavigate('lineas')}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 backdrop-blur px-8 py-3.5 text-sm sm:text-base font-semibold text-gray-100 hover:border-emerald-DEFAULT/50 hover:text-emerald-300 hover:shadow-emerald transition-all duration-300"
           >
             Conocer Líneas de Suministro
-          </a>
+          </button>
         </div>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

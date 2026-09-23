@@ -66,7 +66,7 @@ export default function CotizacionForm() {
   }
 
   return (
-    <section id="cotizacion" className="relative py-14 sm:py-20 border-t border-white/5">
+    <section className="relative pt-24 pb-14 sm:pb-20">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-emerald-DEFAULT/5 blur-3xl"
         aria-hidden="true"

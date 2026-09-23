@@ -3,10 +3,10 @@ export const PHONE_DISPLAY = '442 392 9035'
 export const EMAIL = 'hedijis.ventas@outlook.com'
 
 export const NAV_LINKS = [
-  { href: '#propuesta', label: 'Propuesta de Valor' },
-  { href: '#lineas', label: 'Líneas de Suministro' },
-  { href: '#ventajas', label: 'Beneficios' },
-  { href: '#cotizacion', label: 'Cotización' },
+  { key: 'propuesta', label: 'Propuesta de Valor' },
+  { key: 'lineas', label: 'Líneas de Suministro' },
+  { key: 'ventajas', label: 'Beneficios' },
+  { key: 'cotizacion', label: 'Cotización' },
 ]
 
 export const TRUST_BADGES = ['Atención Directa', 'Continuidad Operativa', 'Enfoque en Costo y Calidad']
