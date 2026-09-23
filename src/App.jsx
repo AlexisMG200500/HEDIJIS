@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import PropuestaValor from './components/PropuestaValor'
@@ -18,6 +18,10 @@ const SECTIONS = {
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('inicio')
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [activeSection])
 
   const ActiveSection = SECTIONS[activeSection] ?? Hero
 
