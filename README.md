@@ -10,21 +10,47 @@ Sitio web corporativo (Single-Page Application) para **HEDIJIS Comercializadora*
 - [Vite](https://vitejs.dev/) como bundler y dev server
 - [Tailwind CSS](https://tailwindcss.com/) para estilos utilitarios
 - [Lucide React](https://lucide.dev/) para iconografía
+- [thinking-orbs](https://github.com/Jakubantalik/thinking-orbs) para el orbe animado del Hero y el indicador del formulario
 - Google Fonts: `Cinzel` / `Playfair Display` (titulares) + `Plus Jakarta Sans` (texto)
 
 ## Estructura
 
 ```
 ├── public/
-│   └── logo-hedijis.jpg      # Logotipo oficial de la marca
+│   └── logo-hedijis.jpg          # Logotipo oficial de la marca
 ├── src/
-│   ├── App.jsx                # SPA completa: navbar, hero, secciones y footer
-│   ├── main.jsx                # Punto de entrada de React
-│   └── index.css               # Estilos base + utilidades Tailwind
+│   ├── components/
+│   │   ├── NavBar.jsx              # Navbar flotante + menú móvil
+│   │   ├── Hero.jsx                 # Hero con orbe animado (thinking-orbs)
+│   │   ├── PropuestaValor.jsx
+│   │   ├── LineasSuministro.jsx     # Grid de las 6 categorías del catálogo
+│   │   ├── Ventajas.jsx
+│   │   ├── CotizacionForm.jsx       # Formulario validado → WhatsApp
+│   │   ├── Footer.jsx
+│   │   ├── WhatsAppFloatingButton.jsx
+│   │   └── Reveal.jsx               # Wrapper de animación scroll-reveal
+│   ├── data/
+│   │   ├── supplyLines.js           # Contenido de las líneas de suministro
+│   │   └── advantages.js            # Contenido de ventajas competitivas
+│   ├── hooks/
+│   │   └── useReveal.js             # Hook de IntersectionObserver
+│   ├── utils/
+│   │   └── whatsapp.js              # Construcción de mensajes y enlaces wa.me
+│   ├── constants.js                 # Contacto, navegación, insignias
+│   ├── App.jsx                      # Orquesta las secciones
+│   ├── main.jsx                      # Punto de entrada de React
+│   └── index.css                     # Estilos base + utilidades Tailwind
 ├── index.html
-├── tailwind.config.js          # Paleta dorado/verde esmeralda y tipografías de marca
+├── tailwind.config.js               # Paleta dorado/verde esmeralda y tipografías de marca
 └── vite.config.js
 ```
+
+## Animaciones
+
+- El **Hero** incluye un orbe animado (`ThinkingOrb`, estado `weaving`, tono dorado) como acento premium.
+- El botón de envío del formulario de cotización muestra un orbe (`state="solving"`) mientras prepara el mensaje de WhatsApp.
+- Cada sección usa `Reveal` (basado en `IntersectionObserver`) para animar su entrada al hacer scroll (fade + slide sutil).
+- Las secciones se diseñaron con espaciado compacto para minimizar el scroll total de la página.
 
 ## Secciones del sitio
 
